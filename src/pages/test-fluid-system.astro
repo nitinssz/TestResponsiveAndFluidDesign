@@ -1,0 +1,285 @@
+---
+import '../styles/fluid-design-system.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fluid Design System - Test Page</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #f5f5f5;
+      }
+
+      .debug-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10000;
+        font-size: 0.875rem;
+        font-family: monospace;
+      }
+
+      .debug-bar strong {
+        color: #4ade80;
+      }
+
+      .test-section {
+        padding: calc(3rem * var(--scale-factor));
+        margin-top: 3rem;
+      }
+
+      .test-card {
+        background: white;
+        padding: calc(2rem * var(--scale-factor));
+        border-radius: calc(1rem * var(--scale-factor));
+        margin-bottom: calc(2rem * var(--scale-factor));
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(1.5rem * var(--scale-factor));
+      }
+
+      .color-box {
+        width: calc(100px * var(--scale-factor));
+        height: calc(100px * var(--scale-factor));
+        border-radius: calc(0.5rem * var(--scale-factor));
+        margin: calc(1rem * var(--scale-factor)) 0;
+      }
+
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc(1rem * var(--scale-factor));
+      }
+
+      .test-button {
+        padding: calc(0.75rem * var(--scale-factor)) calc(1.5rem * var(--scale-factor));
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: calc(0.5rem * var(--scale-factor));
+        font-size: calc(1rem * var(--scale-factor));
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .test-button:hover {
+        transform: translateY(-2px);
+      }
+
+      @media (min-width: 768px) {
+        .test-section {
+          padding: calc(4rem * var(--scale-factor));
+        }
+      }
+
+      @media (min-width: 1280px) {
+        .test-section {
+          padding: calc(5rem * var(--scale-factor));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Debug Bar -->
+    <div class="debug-bar">
+      <div>
+        <strong>Viewport:</strong> <span id="vw">0</span>px × <span id="vh">0</span>px
+      </div>
+      <div>
+        <strong>Scale Factor:</strong> <span id="scale">1.0</span>x
+      </div>
+      <div>
+        <strong>Breakpoint:</strong> <span id="bp">Mobile</span>
+      </div>
+    </div>
+
+    <!-- Test Content -->
+    <main class="test-section fluid-container">
+      <div class="test-card">
+        <h1 class="fluid-text-5xl" style="margin-bottom: calc(1rem * var(--scale-factor));">
+          Fluid Design System
+        </h1>
+        <p class="fluid-text-lg" style="margin-bottom: calc(2rem * var(--scale-factor)); opacity: 0.8;">
+          Resize your browser window to see everything scale proportionally!
+        </p>
+      </div>
+
+      <!-- Typography Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: calc(1.5rem * var(--scale-factor));">
+          Typography Scaling
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: calc(1rem * var(--scale-factor));">
+          <p class="fluid-text-5xl">5XL: The quick brown fox</p>
+          <p class="fluid-text-4xl">4XL: The quick brown fox</p>
+          <p class="fluid-text-3xl">3XL: The quick brown fox</p>
+          <p class="fluid-text-2xl">2XL: The quick brown fox</p>
+          <p class="fluid-text-xl">XL: The quick brown fox</p>
+          <p class="fluid-text-lg">LG: The quick brown fox</p>
+          <p class="fluid-text-base">Base: The quick brown fox</p>
+          <p class="fluid-text-sm">SM: The quick brown fox</p>
+          <p class="fluid-text-xs">XS: The quick brown fox</p>
+        </div>
+      </div>
+
+      <!-- Spacing Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: calc(1.5rem * var(--scale-factor));">
+          Spacing & Colors
+        </h2>
+        <p style="font-size: calc(1rem * var(--scale-factor)); margin-bottom: calc(1rem * var(--scale-factor));">
+          Notice how the boxes scale proportionally with the viewport:
+        </p>
+        <div style="display: flex; gap: calc(1rem * var(--scale-factor)); flex-wrap: wrap;">
+          <div class="color-box" style="background: #667eea;"></div>
+          <div class="color-box" style="background: #764ba2;"></div>
+          <div class="color-box" style="background: #f093fb;"></div>
+          <div class="color-box" style="background: #4facfe;"></div>
+        </div>
+      </div>
+
+      <!-- Button Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: calc(1.5rem * var(--scale-factor));">
+          Button Scaling
+        </h2>
+        <p style="font-size: calc(1rem * var(--scale-factor)); margin-bottom: calc(1.5rem * var(--scale-factor));">
+          Buttons maintain perfect proportions at all sizes:
+        </p>
+        <div class="button-group">
+          <button class="test-button">Primary Action</button>
+          <button class="test-button">Secondary Action</button>
+          <button class="test-button">Tertiary Action</button>
+        </div>
+      </div>
+
+      <!-- Grid Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: calc(1.5rem * var(--scale-factor));">
+          Grid Layout
+        </h2>
+        <div class="test-grid">
+          <div style="background: #f3f4f6; padding: calc(1.5rem * var(--scale-factor)); border-radius: calc(0.5rem * var(--scale-factor));">
+            <h3 class="fluid-text-xl" style="margin-bottom: calc(0.5rem * var(--scale-factor));">Card 1</h3>
+            <p class="fluid-text-base">Content scales proportionally</p>
+          </div>
+          <div style="background: #f3f4f6; padding: calc(1.5rem * var(--scale-factor)); border-radius: calc(0.5rem * var(--scale-factor));">
+            <h3 class="fluid-text-xl" style="margin-bottom: calc(0.5rem * var(--scale-factor));">Card 2</h3>
+            <p class="fluid-text-base">No manual adjustments needed</p>
+          </div>
+          <div style="background: #f3f4f6; padding: calc(1.5rem * var(--scale-factor)); border-radius: calc(0.5rem * var(--scale-factor));">
+            <h3 class="fluid-text-xl" style="margin-bottom: calc(0.5rem * var(--scale-factor));">Card 3</h3>
+            <p class="fluid-text-base">Everything just works!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="test-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h2 class="fluid-text-3xl" style="margin-bottom: calc(1rem * var(--scale-factor));">
+          How to Use
+        </h2>
+        <ol style="font-size: calc(1rem * var(--scale-factor)); line-height: 1.8; padding-left: calc(1.5rem * var(--scale-factor));">
+          <li style="margin-bottom: calc(0.5rem * var(--scale-factor));">Import the fluid design system CSS</li>
+          <li style="margin-bottom: calc(0.5rem * var(--scale-factor));">Wrap content in <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">.fluid-container</code></li>
+          <li style="margin-bottom: calc(0.5rem * var(--scale-factor));">Use <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">calc(value * var(--scale-factor))</code> for all measurements</li>
+          <li style="margin-bottom: calc(0.5rem * var(--scale-factor));">Or use utility classes like <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">.fluid-text-2xl</code></li>
+          <li>That's it! Everything scales automatically 🎉</li>
+        </ol>
+      </div>
+    </main>
+
+    <script>
+      function updateDebug() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        
+        const vwEl = document.getElementById('vw');
+        const vhEl = document.getElementById('vh');
+        const scaleEl = document.getElementById('scale');
+        const bpEl = document.getElementById('bp');
+        
+        if (vwEl) vwEl.textContent = String(vw);
+        if (vhEl) vhEl.textContent = String(vh);
+        
+        // Calculate scale factor based on viewport
+        let scaleFactor = 1.0;
+        let bp = 'Mobile';
+        let status = '';
+        
+        if (vw <= 320) {
+          scaleFactor = 1.0;
+          bp = 'Mobile';
+          status = 'Fluid Scaling';
+        } else if (vw <= 425) {
+          // Fluid: 320px-425px (scale 1.0 to 1.328125)
+          // At exactly 425px, we want scale = 1.328125
+          scaleFactor = 1.0 + ((vw - 320) / 105) * 0.328125;
+          bp = 'Mobile';
+          status = 'Fluid Scaling';
+        } else if (vw < 768) {
+          // Static: locked at 425px scale (426px onwards)
+          scaleFactor = 1.328125;
+          bp = 'Mobile → Tablet';
+          status = 'Static (margins grow)';
+        } else if (vw < 1024) {
+          // Fluid: 768px-1024px (scale 1.0 to 1.333)
+          scaleFactor = 1.0 + ((vw - 768) / 256) * 0.333333;
+          bp = 'Tablet';
+          status = 'Fluid Scaling';
+        } else if (vw < 1280) {
+          // Static: locked at 1024px scale
+          scaleFactor = 1.333333;
+          bp = 'Tablet → Desktop';
+          status = 'Static (margins grow)';
+        } else if (vw < 1440) {
+          // Fluid: 1280px-1440px (scale 1.0 to 1.125)
+          scaleFactor = 1.0 + ((vw - 1280) / 160) * 0.125;
+          bp = 'Desktop';
+          status = 'Fluid Scaling';
+        } else {
+          // Static: locked at 1440px scale
+          scaleFactor = 1.125;
+          bp = 'Desktop+';
+          status = 'Static (margins grow)';
+        }
+        
+        // Set the scale factor as CSS variable
+        document.documentElement.style.setProperty('--scale-factor', scaleFactor.toString());
+        
+        // Display scale factor
+        if (scaleEl) scaleEl.textContent = scaleFactor.toFixed(3);
+        if (bpEl) bpEl.textContent = `${bp} (${status})`;
+      }
+      
+      updateDebug();
+      window.addEventListener('resize', updateDebug);
+      
+      // Update every 100ms for smooth updates
+      setInterval(updateDebug, 100);
+    </script>
+  </body>
+</html>
+

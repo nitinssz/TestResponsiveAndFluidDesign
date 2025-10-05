@@ -1,0 +1,285 @@
+---
+import '../styles/fluid-design-system-pure-css.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pure CSS Fluid Design System - Test Page</title>
+    <style>
+      body {
+        background: #f5f5f5;
+      }
+
+      .debug-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #000;
+        color: #fff;
+        padding: 0.5rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 10000;
+        font-size: 0.875rem;
+        font-family: monospace;
+      }
+
+      .debug-bar strong {
+        color: #4ade80;
+      }
+
+      .test-section {
+        padding: 3rem;
+        margin-top: 3rem;
+      }
+
+      .test-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .test-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .color-box {
+        width: 100px;
+        height: 100px;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+      }
+
+      .button-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .test-button {
+        padding: 0.75rem 1.5rem;
+        background: #667eea;
+        color: white;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .test-button:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Debug Bar -->
+    <div class="debug-bar">
+      <div>
+        <strong>Viewport:</strong> <span id="vw">0</span>px × <span id="vh">0</span>px
+      </div>
+      <div>
+        <strong>HTML Font Size:</strong> <span id="htmlFs">0</span>px (1rem)
+      </div>
+      <div>
+        <strong>Breakpoint:</strong> <span id="bp">Mobile</span>
+      </div>
+      <div>
+        <strong>🎉 ZERO JAVASCRIPT for scaling!</strong>
+      </div>
+    </div>
+
+    <!-- Test Content -->
+    <main class="test-section fluid-container">
+      <div class="test-card">
+        <h1 class="fluid-text-5xl" style="margin-bottom: 1rem;">
+          Pure CSS Fluid Design System
+        </h1>
+        <p class="fluid-text-lg" style="margin-bottom: 2rem; opacity: 0.8;">
+          Resize your browser - everything scales with REM units! Zero JavaScript needed for scaling.
+        </p>
+        <div style="background: #fef3c7; padding: 1rem; border-radius: 0.5rem; border-left: 4px solid #f59e0b;">
+          <strong>How it works:</strong> The html element's font-size changes with viewport using clamp(). 
+          All content uses REM units, which are relative to html font-size. So everything scales automatically!
+        </div>
+      </div>
+
+      <!-- Typography Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1.5rem;">
+          Typography Scaling (REM Based)
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <p class="fluid-text-5xl">5XL (3rem): The quick brown fox</p>
+          <p class="fluid-text-4xl">4XL (2.25rem): The quick brown fox</p>
+          <p class="fluid-text-3xl">3XL (1.875rem): The quick brown fox</p>
+          <p class="fluid-text-2xl">2XL (1.5rem): The quick brown fox</p>
+          <p class="fluid-text-xl">XL (1.25rem): The quick brown fox</p>
+          <p class="fluid-text-lg">LG (1.125rem): The quick brown fox</p>
+          <p class="fluid-text-base">Base (1rem): The quick brown fox</p>
+          <p class="fluid-text-sm">SM (0.875rem): The quick brown fox</p>
+          <p class="fluid-text-xs">XS (0.75rem): The quick brown fox</p>
+        </div>
+      </div>
+
+      <!-- Spacing Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1.5rem;">
+          Spacing & Colors (REM Based)
+        </h2>
+        <p style="font-size: 1rem; margin-bottom: 1rem;">
+          Notice how the boxes scale proportionally with the viewport:
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <div class="color-box" style="background: #667eea;"></div>
+          <div class="color-box" style="background: #764ba2;"></div>
+          <div class="color-box" style="background: #f093fb;"></div>
+          <div class="color-box" style="background: #4facfe;"></div>
+        </div>
+      </div>
+
+      <!-- Button Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1.5rem;">
+          Button Scaling (REM Based)
+        </h2>
+        <p style="font-size: 1rem; margin-bottom: 1.5rem;">
+          Buttons maintain perfect proportions at all sizes:
+        </p>
+        <div class="button-group">
+          <button class="test-button">Primary Action</button>
+          <button class="test-button">Secondary Action</button>
+          <button class="test-button">Tertiary Action</button>
+        </div>
+      </div>
+
+      <!-- Grid Test -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1.5rem;">
+          Grid Layout (REM Based)
+        </h2>
+        <div class="test-grid">
+          <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 0.5rem;">
+            <h3 class="fluid-text-xl" style="margin-bottom: 0.5rem;">Card 1</h3>
+            <p class="fluid-text-base">Content scales proportionally</p>
+          </div>
+          <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 0.5rem;">
+            <h3 class="fluid-text-xl" style="margin-bottom: 0.5rem;">Card 2</h3>
+            <p class="fluid-text-base">No JavaScript needed!</p>
+          </div>
+          <div style="background: #f3f4f6; padding: 1.5rem; border-radius: 0.5rem;">
+            <h3 class="fluid-text-xl" style="margin-bottom: 0.5rem;">Card 3</h3>
+            <p class="fluid-text-base">Pure CSS magic!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explanation -->
+      <div class="test-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1rem;">
+          How to Use (Developer Guide)
+        </h2>
+        <ol style="font-size: 1rem; line-height: 1.8; padding-left: 1.5rem;">
+          <li style="margin-bottom: 0.5rem;">Import <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">fluid-design-system-pure-css.css</code></li>
+          <li style="margin-bottom: 0.5rem;">Wrap content in <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">.fluid-container</code></li>
+          <li style="margin-bottom: 0.5rem;">Use <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">rem</code> units for all measurements</li>
+          <li style="margin-bottom: 0.5rem;">Or use utility classes like <code style="background: rgba(255,255,255,0.2); padding: 0.2rem 0.4rem; border-radius: 0.25rem;">.fluid-text-2xl</code></li>
+          <li>That's it! Everything scales automatically with ZERO JavaScript! 🎉</li>
+        </ol>
+      </div>
+
+      <!-- Comparison -->
+      <div class="test-card">
+        <h2 class="fluid-text-3xl" style="margin-bottom: 1rem;">
+          Pure CSS vs JavaScript Approach
+        </h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+          <div>
+            <h3 class="fluid-text-xl" style="margin-bottom: 0.5rem; color: #10b981;">✅ Pure CSS (This Page)</h3>
+            <ul style="font-size: 0.875rem; line-height: 1.8; padding-left: 1.5rem;">
+              <li>Zero JavaScript</li>
+              <li>Hardware accelerated</li>
+              <li>Instant updates</li>
+              <li>Works offline</li>
+              <li>Simpler code</li>
+              <li>Better performance</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="fluid-text-xl" style="margin-bottom: 0.5rem; color: #ef4444;">❌ JavaScript Version</h3>
+            <ul style="font-size: 0.875rem; line-height: 1.8; padding-left: 1.5rem;">
+              <li>Requires JavaScript</li>
+              <li>Event listeners needed</li>
+              <li>Polling or resize events</li>
+              <li>Won't work if JS disabled</li>
+              <li>More complex</li>
+              <li>Extra overhead</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // This JavaScript is ONLY for the debug bar display
+      // The actual scaling happens in pure CSS!
+      function updateDebug() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        
+        const vwEl = document.getElementById('vw');
+        const vhEl = document.getElementById('vh');
+        const htmlFsEl = document.getElementById('htmlFs');
+        const bpEl = document.getElementById('bp');
+        
+        if (vwEl) vwEl.textContent = String(vw);
+        if (vhEl) vhEl.textContent = String(vh);
+        
+        // Get computed HTML font size (this is what 1rem equals)
+        const htmlFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        if (htmlFsEl) htmlFsEl.textContent = htmlFs.toFixed(2);
+        
+        // Determine breakpoint
+        let bp = 'Mobile';
+        let status = '';
+        
+        if (vw <= 425) {
+          bp = 'Mobile';
+          status = 'Fluid Scaling';
+        } else if (vw < 768) {
+          bp = 'Mobile → Tablet';
+          status = 'Static (margins grow)';
+        } else if (vw < 1024) {
+          bp = 'Tablet';
+          status = 'Fluid Scaling';
+        } else if (vw < 1280) {
+          bp = 'Tablet → Desktop';
+          status = 'Static (margins grow)';
+        } else if (vw < 1440) {
+          bp = 'Desktop';
+          status = 'Fluid Scaling';
+        } else {
+          bp = 'Desktop+';
+          status = 'Static (margins grow)';
+        }
+        
+        if (bpEl) bpEl.textContent = `${bp} (${status})`;
+      }
+      
+      updateDebug();
+      window.addEventListener('resize', updateDebug);
+      
+      // Update every 100ms for smooth display
+      setInterval(updateDebug, 100);
+    </script>
+  </body>
+</html>
+

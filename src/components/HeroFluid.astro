@@ -1,0 +1,261 @@
+---
+// Hero component using the Fluid Design System
+// This demonstrates how to use the system with any component
+---
+
+<section class="hero">
+  <div class="hero-wrapper fluid-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Responsive & Fluid Design</h1>
+      <p class="hero-description">
+        Experience the perfect blend of responsive breakpoints and fluid scaling. 
+        This design adapts seamlessly across all devices with precise control.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">Get Started</a>
+        <a href="#" class="btn btn-secondary">Learn More</a>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="image-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+          <rect width="400" height="300" fill="rgba(255, 255, 255, 0.1)" rx="12"/>
+          <circle cx="150" cy="100" r="40" fill="rgba(255, 255, 255, 0.2)"/>
+          <path d="M50 220 L120 150 L180 180 L350 80" stroke="rgba(255, 255, 255, 0.3)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="160" y="180" width="200" height="90" fill="rgba(255, 255, 255, 0.15)" rx="8"/>
+        </svg>
+        <p class="placeholder-text">Image Placeholder</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ============================================
+     MOBILE DESIGN (320px base)
+     All measurements are for 320px viewport
+     ============================================ */
+  
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(1rem * var(--scale-factor));
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .hero-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: calc(1.5rem * var(--scale-factor));
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  .hero-content {
+    text-align: center;
+    color: white;
+  }
+
+  .hero-title {
+    font-size: calc(1.75rem * var(--scale-factor));
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: calc(0.75rem * var(--scale-factor));
+    background: linear-gradient(45deg, #fff, #f0f0f0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description {
+    font-size: calc(0.9rem * var(--scale-factor));
+    line-height: 1.6;
+    margin-bottom: calc(1.25rem * var(--scale-factor));
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: calc(0.75rem * var(--scale-factor));
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    padding: calc(0.6rem * var(--scale-factor)) calc(1.2rem * var(--scale-factor));
+    border: none;
+    border-radius: calc(0.5rem * var(--scale-factor));
+    font-size: calc(0.8rem * var(--scale-factor));
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    width: calc(138px * var(--scale-factor));
+    flex-shrink: 0;
+  }
+
+  .btn-primary {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+  }
+
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  .hero-image {
+    display: none;
+  }
+
+  .image-placeholder {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: calc(1rem * var(--scale-factor));
+  }
+
+  .image-placeholder svg {
+    width: 100%;
+    height: auto;
+    max-width: calc(300px * var(--scale-factor));
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+  }
+
+  .placeholder-text {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: calc(0.9rem * var(--scale-factor));
+    font-weight: 500;
+    margin: 0;
+  }
+
+  /* ============================================
+     TABLET DESIGN (768px base)
+     All measurements are for 768px viewport
+     ============================================ */
+
+  @media (min-width: 768px) {
+    .hero {
+      padding: calc(3rem * var(--scale-factor));
+    }
+
+    .hero-wrapper {
+      grid-template-columns: 1fr 1fr;
+      gap: calc(3rem * var(--scale-factor));
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-title {
+      font-size: calc(3rem * var(--scale-factor));
+      margin-bottom: calc(1.5rem * var(--scale-factor));
+    }
+
+    .hero-description {
+      font-size: calc(1.3rem * var(--scale-factor));
+      margin-bottom: calc(2rem * var(--scale-factor));
+    }
+
+    .hero-buttons {
+      justify-content: flex-start;
+      gap: calc(1.5rem * var(--scale-factor));
+    }
+
+    .btn {
+      padding: calc(1.2rem * var(--scale-factor)) calc(2.4rem * var(--scale-factor));
+      font-size: calc(1.1rem * var(--scale-factor));
+      width: calc(180px * var(--scale-factor));
+    }
+
+    .hero-image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .image-placeholder svg {
+      max-width: calc(400px * var(--scale-factor));
+    }
+  }
+
+  /* ============================================
+     DESKTOP DESIGN (1280px base)
+     All measurements are for 1280px viewport
+     ============================================ */
+
+  @media (min-width: 1280px) {
+    .hero {
+      padding: calc(5rem * var(--scale-factor));
+    }
+
+    .hero-wrapper {
+      gap: calc(4rem * var(--scale-factor));
+    }
+
+    .hero-title {
+      font-size: calc(4rem * var(--scale-factor));
+      margin-bottom: calc(2rem * var(--scale-factor));
+    }
+
+    .hero-description {
+      font-size: calc(1.5rem * var(--scale-factor));
+      margin-bottom: calc(2.5rem * var(--scale-factor));
+    }
+
+    .hero-buttons {
+      gap: calc(2rem * var(--scale-factor));
+    }
+
+    .btn {
+      padding: calc(1.4rem * var(--scale-factor)) calc(2.8rem * var(--scale-factor));
+      font-size: calc(1.2rem * var(--scale-factor));
+      width: calc(200px * var(--scale-factor));
+    }
+
+    .image-placeholder svg {
+      max-width: calc(450px * var(--scale-factor));
+    }
+  }
+</style>
+

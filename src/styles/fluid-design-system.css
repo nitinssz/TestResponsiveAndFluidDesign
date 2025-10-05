@@ -1,0 +1,304 @@
+/**
+ * FLUID DESIGN SYSTEM
+ * 
+ * Purpose: Scale designs proportionally between specific breakpoints
+ * Design Breakpoints: 320px (Mobile), 768px (Tablet), 1280px (Desktop)
+ * 
+ * How it works:
+ * - Designers design at 320px, 768px, and 1280px
+ * - Between breakpoints, everything scales proportionally (zooms)
+ * - At static ranges, content locks and margins increase
+ * 
+ * Usage: Add classes to any element that needs fluid scaling
+ */
+
+/* ============================================
+   ROOT VARIABLES & DESIGN TOKENS
+   ============================================ */
+
+:root {
+  /* Base Design Widths */
+  --design-mobile: 320;
+  --design-tablet: 768;
+  --design-desktop: 1280;
+  
+  /* Scaling Factor: 1 = 100% of design size */
+  /* Default for < 320px */
+  --scale-factor: 1;
+}
+
+/* Base scaling for all viewports (applies when no media query matches) */
+body {
+  font-size: 14px;
+}
+
+/* ============================================
+   FLUID SCALING FORMULA
+   
+   Formula: clamp(MIN, FLUID, MAX)
+   Where FLUID = MIN + (MAX - MIN) * ((100vw - MIN_VP) / (MAX_VP - MIN_VP))
+   
+   Simplified: clamp(MIN, MIN + (MAX - MIN) * vw_coefficient, MAX)
+   ============================================ */
+
+/* ============================================
+   MOBILE RANGE: 320px - 425px (Fluid Scaling)
+   Note: Scale factor is set via JavaScript for reliability
+   ============================================ */
+
+@media (max-width: 425px) {
+  /* Apply scaling to body - uses JS-calculated scale factor */
+  body {
+    /* Font size scales based on --scale-factor variable */
+    font-size: calc(14px * var(--scale-factor)) !important;
+  }
+}
+
+/* ============================================
+   MOBILE-TABLET STATIC: 426px - 768px
+   Content locked at 425px design, margins grow
+   ============================================ */
+
+@media (min-width: 426px) and (max-width: 767px) {
+  :root {
+    --scale-factor: 1.328125; /* Locked at 425px scale */
+  }
+  
+  body {
+    font-size: calc(14px * var(--scale-factor));
+  }
+  
+  /* Container constraint for margin growth */
+  .fluid-container {
+    max-width: 425px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================================
+   TABLET RANGE: 768px - 1024px (Fluid Scaling)
+   Note: Scale factor is set via JavaScript
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  body {
+    /* Font size scales with viewport */
+    font-size: calc(16px * var(--scale-factor)) !important;
+  }
+}
+
+/* ============================================
+   TABLET-DESKTOP STATIC: 1024px - 1280px
+   Content locked at 1024px design, margins grow
+   ============================================ */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  :root {
+    --scale-factor: 1.333333; /* Locked at 1024px scale */
+  }
+  
+  body {
+    font-size: calc(16px * var(--scale-factor));
+  }
+  
+  /* Container constraint for margin growth */
+  .fluid-container {
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================================
+   DESKTOP RANGE: 1280px - 1440px (Fluid Scaling)
+   Note: Scale factor is set via JavaScript
+   ============================================ */
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  body {
+    font-size: calc(18px * var(--scale-factor)) !important;
+  }
+}
+
+/* ============================================
+   DESKTOP+ STATIC: 1440px+ 
+   Content locked at 1440px design, margins grow
+   ============================================ */
+
+@media (min-width: 1440px) {
+  :root {
+    --scale-factor: 1.125; /* Locked at 1440px scale */
+  }
+  
+  body {
+    font-size: calc(18px * var(--scale-factor));
+  }
+  
+  /* Container constraint for margin growth */
+  .fluid-container {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   Apply these to elements that need proportional scaling
+   ============================================ */
+
+/* Fluid Container - constrains content in static ranges */
+.fluid-container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-sizing: border-box;
+}
+
+/* Fluid Spacing - scales with design system */
+.fluid-spacing-xs { margin: calc(0.25rem * var(--scale-factor)); }
+.fluid-spacing-sm { margin: calc(0.5rem * var(--scale-factor)); }
+.fluid-spacing-md { margin: calc(1rem * var(--scale-factor)); }
+.fluid-spacing-lg { margin: calc(1.5rem * var(--scale-factor)); }
+.fluid-spacing-xl { margin: calc(2rem * var(--scale-factor)); }
+.fluid-spacing-2xl { margin: calc(3rem * var(--scale-factor)); }
+
+/* Fluid Padding */
+.fluid-padding-xs { padding: calc(0.25rem * var(--scale-factor)); }
+.fluid-padding-sm { padding: calc(0.5rem * var(--scale-factor)); }
+.fluid-padding-md { padding: calc(1rem * var(--scale-factor)); }
+.fluid-padding-lg { padding: calc(1.5rem * var(--scale-factor)); }
+.fluid-padding-xl { padding: calc(2rem * var(--scale-factor)); }
+.fluid-padding-2xl { padding: calc(3rem * var(--scale-factor)); }
+
+/* Fluid Typography - scales proportionally */
+.fluid-text-xs { font-size: calc(0.75rem * var(--scale-factor)); }
+.fluid-text-sm { font-size: calc(0.875rem * var(--scale-factor)); }
+.fluid-text-base { font-size: calc(1rem * var(--scale-factor)); }
+.fluid-text-lg { font-size: calc(1.125rem * var(--scale-factor)); }
+.fluid-text-xl { font-size: calc(1.25rem * var(--scale-factor)); }
+.fluid-text-2xl { font-size: calc(1.5rem * var(--scale-factor)); }
+.fluid-text-3xl { font-size: calc(1.875rem * var(--scale-factor)); }
+.fluid-text-4xl { font-size: calc(2.25rem * var(--scale-factor)); }
+.fluid-text-5xl { font-size: calc(3rem * var(--scale-factor)); }
+
+/* Fluid Widths - for images, buttons, etc */
+.fluid-width-full { width: 100%; }
+.fluid-width-auto { width: auto; }
+.fluid-width-fit { width: fit-content; }
+
+/* Fluid Heights */
+.fluid-height-auto { height: auto; }
+.fluid-height-full { height: 100%; }
+
+/* Fluid Gap (for flexbox/grid) */
+.fluid-gap-xs { gap: calc(0.25rem * var(--scale-factor)); }
+.fluid-gap-sm { gap: calc(0.5rem * var(--scale-factor)); }
+.fluid-gap-md { gap: calc(1rem * var(--scale-factor)); }
+.fluid-gap-lg { gap: calc(1.5rem * var(--scale-factor)); }
+.fluid-gap-xl { gap: calc(2rem * var(--scale-factor)); }
+
+/* ============================================
+   RESPONSIVE IMAGES
+   Images scale proportionally with design
+   ============================================ */
+
+img.fluid-img,
+.fluid-img img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   DESIGN TOKEN FUNCTIONS (CSS Custom Properties)
+   Use these in your components for precise control
+   ============================================ */
+
+/* Example: Define design tokens at each breakpoint */
+.custom-button {
+  /* Mobile design (320px) */
+  --button-padding-mobile: 0.5rem 1rem;
+  --button-font-mobile: 0.875rem;
+  
+  /* Tablet design (768px) */
+  --button-padding-tablet: 0.75rem 1.5rem;
+  --button-font-tablet: 1rem;
+  
+  /* Desktop design (1280px) */
+  --button-padding-desktop: 1rem 2rem;
+  --button-font-desktop: 1.125rem;
+  
+  /* Apply scaled values */
+  padding: calc(0.5rem * var(--scale-factor)) calc(1rem * var(--scale-factor));
+  font-size: calc(0.875rem * var(--scale-factor));
+}
+
+@media (min-width: 768px) {
+  .custom-button {
+    padding: calc(0.75rem * var(--scale-factor)) calc(1.5rem * var(--scale-factor));
+    font-size: calc(1rem * var(--scale-factor));
+  }
+}
+
+@media (min-width: 1280px) {
+  .custom-button {
+    padding: calc(1rem * var(--scale-factor)) calc(2rem * var(--scale-factor));
+    font-size: calc(1.125rem * var(--scale-factor));
+  }
+}
+
+/* ============================================
+   DEBUGGING HELPERS (Remove in production)
+   ============================================ */
+
+.debug-scale-factor::before {
+  content: 'Scale: ' attr(data-scale);
+  position: fixed;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  z-index: 9999;
+}
+
+/* ============================================
+   NOTES FOR DEVELOPERS
+   
+   1. DESIGNER WORKFLOW:
+      - Design at exactly 320px (mobile)
+      - Design at exactly 768px (tablet)  
+      - Design at exactly 1280px (desktop)
+   
+   2. DEVELOPER WORKFLOW:
+      - Extract measurements from designs (px values)
+      - Convert to rem (divide by base font size)
+      - Multiply by var(--scale-factor) for proportional scaling
+      - Use .fluid-container to constrain in static ranges
+   
+   3. FORMULA EXPLAINED:
+      Mobile (320-425px): Scales 100% → 132.8%
+      Static (425-768px): Locked at 132.8%, margins grow
+      Tablet (768-1024px): Scales 100% → 133.3%
+      Static (1024-1280px): Locked at 133.3%, margins grow
+      Desktop (1280-1440px): Scales 100% → 112.5%
+      Static (1440px+): Locked at 112.5%, margins grow
+   
+   4. WHY THIS WORKS:
+      - Everything scales proportionally (like browser zoom)
+      - Maintains designer's exact proportions
+      - No "in-between" sizes to design
+      - Developers don't need to make design decisions
+      - Static ranges prevent over-stretching
+   
+   5. EXAMPLE USAGE:
+      <div class="fluid-container">
+        <h1 class="fluid-text-4xl">Heading</h1>
+        <p class="fluid-text-base fluid-spacing-md">Content</p>
+        <img src="..." class="fluid-img" alt="...">
+      </div>
+   ============================================ */
+

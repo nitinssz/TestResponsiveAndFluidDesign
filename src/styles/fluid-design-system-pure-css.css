@@ -1,0 +1,210 @@
+/**
+ * PURE CSS FLUID DESIGN SYSTEM (Zero JavaScript)
+ * 
+ * This uses CSS clamp() directly in properties for true fluid scaling
+ * No CSS variables needed - clamp() recalculates automatically on viewport change
+ */
+
+/* ============================================
+   GLOBAL RESET
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   BASE STYLES - Mobile First (320px base)
+   ============================================ */
+
+html {
+  /* Fluid font size from 320px to 425px */
+  /* 16px at 320px, 21.25px at 425px (scale factor: 1.328125) */
+  /* Formula: min + (max - min) * (100vw - min-vw) / (max-vw - min-vw) */
+  font-size: clamp(16px, calc(16px + (21.25 - 16) * ((100vw - 320px) / (425 - 320))), 21.25px);
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   FLUID CONTAINER
+   Constrains content in static ranges
+   ============================================ */
+
+.fluid-container {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* ============================================
+   MOBILE-TABLET STATIC: 426px - 768px
+   Content locked, margins grow
+   ============================================ */
+
+@media (min-width: 426px) and (max-width: 767px) {
+  html {
+    /* Lock font size at 425px value (16px * 1.328125) */
+    font-size: 21.25px;
+  }
+  
+  .fluid-container {
+    max-width: 425px;
+  }
+}
+
+/* ============================================
+   TABLET RANGE: 768px - 1024px (Fluid Scaling)
+   ============================================ */
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  html {
+    /* Fluid: 16px at 768px to 21.33px at 1024px (scale factor: 1.333333) */
+    font-size: clamp(16px, calc(16px + (21.33 - 16) * ((100vw - 768px) / (1024 - 768))), 21.33px);
+  }
+}
+
+/* ============================================
+   TABLET-DESKTOP STATIC: 1024px - 1280px
+   ============================================ */
+
+@media (min-width: 1024px) and (max-width: 1279px) {
+  html {
+    /* Lock at 1024px value (16px * 1.333333) */
+    font-size: 21.33px;
+  }
+  
+  .fluid-container {
+    max-width: 1024px;
+  }
+}
+
+/* ============================================
+   DESKTOP RANGE: 1280px - 1440px (Fluid Scaling)
+   ============================================ */
+
+@media (min-width: 1280px) and (max-width: 1439px) {
+  html {
+    /* Fluid: 16px at 1280px to 18px at 1440px (scale factor: 1.125) */
+    font-size: clamp(16px, calc(16px + (18 - 16) * ((100vw - 1280px) / (1440 - 1280))), 18px);
+  }
+}
+
+/* ============================================
+   DESKTOP+ STATIC: 1440px+
+   ============================================ */
+
+@media (min-width: 1440px) {
+  html {
+    /* Lock at 1440px value (16px * 1.125) */
+    font-size: 18px;
+  }
+  
+  .fluid-container {
+    max-width: 1440px;
+  }
+}
+
+/* ============================================
+   UTILITY CLASSES - Use REM for Scaling
+   Everything uses REM which scales with html font-size
+   ============================================ */
+
+/* Typography - uses rem, scales with html font-size */
+.fluid-text-xs { font-size: 0.75rem; }
+.fluid-text-sm { font-size: 0.875rem; }
+.fluid-text-base { font-size: 1rem; }
+.fluid-text-lg { font-size: 1.125rem; }
+.fluid-text-xl { font-size: 1.25rem; }
+.fluid-text-2xl { font-size: 1.5rem; }
+.fluid-text-3xl { font-size: 1.875rem; }
+.fluid-text-4xl { font-size: 2.25rem; }
+.fluid-text-5xl { font-size: 3rem; }
+
+/* Spacing - uses rem, scales automatically */
+.fluid-spacing-xs { margin: 0.25rem; }
+.fluid-spacing-sm { margin: 0.5rem; }
+.fluid-spacing-md { margin: 1rem; }
+.fluid-spacing-lg { margin: 1.5rem; }
+.fluid-spacing-xl { margin: 2rem; }
+.fluid-spacing-2xl { margin: 3rem; }
+
+/* Padding */
+.fluid-padding-xs { padding: 0.25rem; }
+.fluid-padding-sm { padding: 0.5rem; }
+.fluid-padding-md { padding: 1rem; }
+.fluid-padding-lg { padding: 1.5rem; }
+.fluid-padding-xl { padding: 2rem; }
+.fluid-padding-2xl { padding: 3rem; }
+
+/* Gap */
+.fluid-gap-xs { gap: 0.25rem; }
+.fluid-gap-sm { gap: 0.5rem; }
+.fluid-gap-md { gap: 1rem; }
+.fluid-gap-lg { gap: 1.5rem; }
+.fluid-gap-xl { gap: 2rem; }
+
+/* Images */
+img.fluid-img,
+.fluid-img img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ============================================
+   HOW TO USE IN YOUR COMPONENTS
+   
+   Simply use REM units - they scale with html font-size!
+   
+   Example:
+   .my-component {
+     padding: 1.5rem;        // Scales automatically
+     font-size: 1.25rem;     // Scales automatically  
+     gap: 2rem;              // Scales automatically
+     border-radius: 0.5rem;  // Scales automatically
+   }
+   
+   At 320px: html = 16px, so 1rem = 16px
+   At 375px: html = 18.76px, so 1rem = 18.76px (everything scales!)
+   At 425px: html = 21.25px, so 1rem = 21.25px
+   At 600px: html = 21.25px (locked), so 1rem = 21.25px
+   At 768px: html = 16px (new base), so 1rem = 16px
+   
+   ============================================ */
+
+/* ============================================
+   DESIGN WORKFLOW
+   
+   DESIGNER:
+   1. Design at 320px - measure everything in pixels
+   2. Design at 768px - measure everything in pixels
+   3. Design at 1280px - measure everything in pixels
+   
+   DEVELOPER:
+   1. Convert px to rem by dividing by 16 (base font size at all breakpoints)
+      Mobile (320px): divide by 16
+      Tablet (768px): divide by 16
+      Desktop (1280px): divide by 16
+   2. Use rem values in your CSS
+   3. Everything scales automatically!
+   
+   Example:
+   Designer says: "Button padding is 24px at 320px"
+   Developer: 24 / 16 = 1.5rem
+   CSS: padding: 1.5rem;
+   Result: At 320px = 24px (16 * 1.5), at 375px = 28.14px, at 425px = 31.88px (scales!)
+   
+   ============================================ */
+
