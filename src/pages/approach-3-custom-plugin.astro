@@ -1,0 +1,281 @@
+---
+/**
+ * APPROACH 3: Custom Plugin Utilities
+ * Use custom fluid-* utilities from Tailwind plugin
+ */
+import '../styles/fluid-base.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Approach 3: Custom Plugin - Tailwind + Fluid</title>
+  </head>
+  <body class="bg-gradient-to-br from-blue-50 to-indigo-50">
+    <!-- Debug Bar -->
+    <div class="fixed top-0 left-0 right-0 bg-black text-white px-4 py-2 flex justify-between items-center z-50 text-xs font-mono">
+      <div>Viewport: <span id="vw">0</span>px × <span id="vh">0</span>px</div>
+      <div>1rem = <span id="htmlFs">0</span>px</div>
+      <div>Breakpoint: <span id="bp">Mobile</span></div>
+      <div class="text-blue-400">🔌 Approach 3: Custom Plugin</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 pb-8">
+      <div class="fluid-container">
+        <div class="text-center mb-12">
+          <h1 class="fluid-text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            Approach 3: Custom Plugin
+          </h1>
+          <p class="fluid-text-xl text-gray-600 max-w-2xl mx-auto">
+            Use custom <code class="bg-blue-100 text-blue-700 px-2 py-1 rounded">fluid-*</code> utilities from our Tailwind plugin for explicit control.
+          </p>
+        </div>
+
+        <!-- Comparison: fluid-* vs regular Tailwind -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+          <!-- Custom Plugin Side -->
+          <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div class="bg-gradient-to-r from-blue-600 to-indigo-600 fluid-padding-lg">
+              <h2 class="fluid-text-2xl font-bold text-white">Custom Plugin Utilities</h2>
+              <p class="text-blue-100 mt-2">Using fluid-* classes</p>
+            </div>
+            
+            <div class="fluid-padding-xl space-y-6">
+              <div>
+                <h3 class="fluid-text-xl font-bold mb-3">Typography</h3>
+                <div class="space-y-2 bg-blue-50 fluid-padding-md rounded-xl">
+                  <p class="fluid-text-5xl font-bold">fluid-text-5xl</p>
+                  <p class="fluid-text-4xl font-bold">fluid-text-4xl</p>
+                  <p class="fluid-text-3xl">fluid-text-3xl</p>
+                  <p class="fluid-text-2xl">fluid-text-2xl</p>
+                  <p class="fluid-text-xl">fluid-text-xl</p>
+                  <p class="fluid-text-base">fluid-text-base</p>
+                  <p class="fluid-text-sm">fluid-text-sm</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="fluid-text-xl font-bold mb-3">Spacing</h3>
+                <div class="flex flex-wrap fluid-gap-md">
+                  <div class="fluid-padding-xs bg-blue-500 text-white rounded text-xs font-semibold">
+                    fluid-padding-xs
+                  </div>
+                  <div class="fluid-padding-sm bg-indigo-500 text-white rounded text-xs font-semibold">
+                    fluid-padding-sm
+                  </div>
+                  <div class="fluid-padding-md bg-purple-500 text-white rounded text-xs font-semibold">
+                    fluid-padding-md
+                  </div>
+                  <div class="fluid-padding-lg bg-pink-500 text-white rounded text-xs font-semibold">
+                    fluid-padding-lg
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="fluid-text-xl font-bold mb-3">Gaps (Grid/Flex)</h3>
+                <div class="grid grid-cols-2 fluid-gap-lg">
+                  <div class="bg-gradient-to-br from-blue-100 to-blue-200 fluid-padding-md rounded-lg">
+                    <div class="fluid-text-lg font-bold">Box 1</div>
+                    <div class="fluid-text-sm">fluid-gap-lg</div>
+                  </div>
+                  <div class="bg-gradient-to-br from-indigo-100 to-indigo-200 fluid-padding-md rounded-lg">
+                    <div class="fluid-text-lg font-bold">Box 2</div>
+                    <div class="fluid-text-sm">Scales!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Standard Tailwind Side -->
+          <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div class="bg-gradient-to-r from-gray-600 to-gray-700 p-8">
+              <h2 class="text-2xl font-bold text-white">Standard Tailwind</h2>
+              <p class="text-gray-300 mt-2">Also scales (because of config!)</p>
+            </div>
+            
+            <div class="p-12 space-y-6">
+              <div>
+                <h3 class="text-xl font-bold mb-3">Typography</h3>
+                <div class="space-y-2 bg-gray-50 p-6 rounded-xl">
+                  <p class="text-5xl font-bold">text-5xl</p>
+                  <p class="text-4xl font-bold">text-4xl</p>
+                  <p class="text-3xl">text-3xl</p>
+                  <p class="text-2xl">text-2xl</p>
+                  <p class="text-xl">text-xl</p>
+                  <p class="text-base">text-base</p>
+                  <p class="text-sm">text-sm</p>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold mb-3">Spacing</h3>
+                <div class="flex flex-wrap gap-4">
+                  <div class="p-2 bg-gray-500 text-white rounded text-xs font-semibold">
+                    p-2
+                  </div>
+                  <div class="p-3 bg-gray-600 text-white rounded text-xs font-semibold">
+                    p-3
+                  </div>
+                  <div class="p-4 bg-gray-700 text-white rounded text-xs font-semibold">
+                    p-4
+                  </div>
+                  <div class="p-6 bg-gray-800 text-white rounded text-xs font-semibold">
+                    p-6
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold mb-3">Gaps (Grid/Flex)</h3>
+                <div class="grid grid-cols-2 gap-6">
+                  <div class="bg-gradient-to-br from-gray-100 to-gray-200 p-6 rounded-lg">
+                    <div class="text-lg font-bold">Box 1</div>
+                    <div class="text-sm">gap-6</div>
+                  </div>
+                  <div class="bg-gradient-to-br from-gray-200 to-gray-300 p-6 rounded-lg">
+                    <div class="text-lg font-bold">Box 2</div>
+                    <div class="text-sm">Also scales!</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature Showcase -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-12">
+          <div class="bg-gradient-to-r from-indigo-600 to-purple-600 fluid-padding-xl">
+            <h2 class="fluid-text-3xl font-bold text-white">Mixed Approach Example</h2>
+            <p class="fluid-text-lg text-indigo-100 mt-2">Combining both for maximum flexibility</p>
+          </div>
+          
+          <div class="fluid-padding-xl">
+            <!-- Using mix of standard + custom -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div class="bg-gradient-to-br from-blue-500 to-blue-600 fluid-padding-lg rounded-2xl text-white hover:scale-105 transition-transform">
+                <div class="fluid-text-4xl mb-3">🎯</div>
+                <h3 class="fluid-text-xl font-bold mb-2">Explicit Control</h3>
+                <p class="fluid-text-sm opacity-90">
+                  Use fluid-* when you want to be explicit about scaling
+                </p>
+              </div>
+
+              <div class="bg-gradient-to-br from-purple-500 to-purple-600 p-8 rounded-2xl text-white hover:scale-105 transition-transform">
+                <div class="text-4xl mb-3">⚡</div>
+                <h3 class="text-xl font-bold mb-2">Tailwind Power</h3>
+                <p class="text-sm opacity-90">
+                  Regular Tailwind also works great (scales too!)
+                </p>
+              </div>
+
+              <div class="bg-gradient-to-br from-pink-500 to-pink-600 fluid-padding-lg rounded-2xl text-white hover:scale-105 transition-transform">
+                <div class="fluid-text-4xl mb-3">🎨</div>
+                <h3 class="fluid-text-xl font-bold mb-2">Best of Both</h3>
+                <p class="fluid-text-sm opacity-90">
+                  Mix and match based on your needs
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div class="fluid-padding-xl">
+            <h2 class="fluid-text-3xl font-bold mb-6 text-center">When to Use Each Approach</h2>
+            
+            <div class="overflow-x-auto">
+              <table class="w-full">
+                <thead>
+                  <tr class="bg-gradient-to-r from-blue-100 to-indigo-100">
+                    <th class="p-4 text-left font-bold">Feature</th>
+                    <th class="p-4 text-left font-bold">Standard Tailwind</th>
+                    <th class="p-4 text-left font-bold">fluid-* Custom</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y">
+                  <tr>
+                    <td class="p-4 font-semibold">Scales with viewport</td>
+                    <td class="p-4">✅ Yes (via config)</td>
+                    <td class="p-4">✅ Yes (built-in)</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-4 font-semibold">IntelliSense support</td>
+                    <td class="p-4">✅ Full support</td>
+                    <td class="p-4">⚠️ May need setup</td>
+                  </tr>
+                  <tr>
+                    <td class="p-4 font-semibold">Explicit naming</td>
+                    <td class="p-4">❌ Not obvious it scales</td>
+                    <td class="p-4">✅ Clear intent</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-4 font-semibold">Code clarity</td>
+                    <td class="p-4">⚠️ Looks standard</td>
+                    <td class="p-4">✅ Shows it's fluid</td>
+                  </tr>
+                  <tr>
+                    <td class="p-4 font-semibold">Team onboarding</td>
+                    <td class="p-4">✅ Everyone knows it</td>
+                    <td class="p-4">⚠️ Need to learn custom classes</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recommendation -->
+        <div class="mt-12 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 fluid-padding-xl rounded-r-2xl">
+          <h3 class="fluid-text-2xl font-bold text-green-900 mb-4">💡 Recommendation</h3>
+          <p class="fluid-text-base text-gray-700 mb-4">
+            <strong>Best practice:</strong> Use standard Tailwind for most things (Approach 2), 
+            but use <code class="bg-green-100 px-2 py-1 rounded">fluid-*</code> utilities when you want 
+            to explicitly signal that something scales.
+          </p>
+          <div class="bg-white fluid-padding-md rounded-xl">
+            <pre class="text-sm"><code>&lt;div class="p-8 text-xl"&gt;  {/* Standard Tailwind - scales */}
+  &lt;h1 class="fluid-text-4xl"&gt;  {/* Explicit fluid - clear intent */}
+    Mix and match!
+  &lt;/h1&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function updateDebug() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const vwEl = document.getElementById('vw');
+        const vhEl = document.getElementById('vh');
+        const htmlFsEl = document.getElementById('htmlFs');
+        const bpEl = document.getElementById('bp');
+        
+        if (vwEl) vwEl.textContent = String(vw);
+        if (vhEl) vhEl.textContent = String(vh);
+        
+        const htmlFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        if (htmlFsEl) htmlFsEl.textContent = htmlFs.toFixed(2);
+        
+        let bp = vw <= 425 ? 'Mobile (Fluid)' :
+                 vw < 768 ? 'Mobile-Tablet (Static)' :
+                 vw < 1024 ? 'Tablet (Fluid)' :
+                 vw < 1280 ? 'Tablet-Desktop (Static)' :
+                 vw < 1440 ? 'Desktop (Fluid)' : 'Desktop+ (Static)';
+        
+        if (bpEl) bpEl.textContent = bp;
+      }
+      
+      updateDebug();
+      window.addEventListener('resize', updateDebug);
+      setInterval(updateDebug, 100);
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,249 @@
+---
+/**
+ * APPROACH 2: Tailwind Scales Automatically
+ * ALL Tailwind utilities scale because they use rem values
+ */
+import '../styles/fluid-base.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Approach 2: Tailwind Scales - Tailwind + Fluid</title>
+  </head>
+  <body class="bg-gradient-to-br from-purple-50 to-pink-50">
+    <!-- Debug Bar -->
+    <div class="fixed top-0 left-0 right-0 bg-black text-white px-4 py-2 flex justify-between items-center z-50 text-xs font-mono">
+      <div>Viewport: <span id="vw">0</span>px × <span id="vh">0</span>px</div>
+      <div>1rem = <span id="htmlFs">0</span>px</div>
+      <div>Breakpoint: <span id="bp">Mobile</span></div>
+      <div class="text-purple-400">✨ Approach 2: ALL Tailwind Scales!</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center pt-16 pb-8">
+      <div class="fluid-container">
+        <div class="text-center mb-12">
+          <h1 class="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 bg-clip-text text-transparent">
+            Approach 2: Pure Tailwind
+          </h1>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Use Tailwind utilities DIRECTLY. They automatically scale because our config uses rem values!
+          </p>
+          <div class="inline-block mt-4 px-4 py-2 bg-purple-100 text-purple-700 rounded-lg text-sm font-semibold">
+            🎉 No fluid classes needed - Tailwind does it all!
+          </div>
+        </div>
+
+        <!-- Feature Grid - ALL using pure Tailwind -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-3xl">📏</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Spacing Scales</h3>
+            <p class="text-base text-gray-600">
+              p-8, gap-6, mb-4 - all scale automatically!
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-3xl">📝</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Text Scales</h3>
+            <p class="text-base text-gray-600">
+              text-2xl, text-base - scales perfectly!
+            </p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-pink-600 rounded-xl flex items-center justify-center mb-4">
+              <span class="text-3xl">🎨</span>
+            </div>
+            <h3 class="text-2xl font-bold mb-2">Everything Scales</h3>
+            <p class="text-base text-gray-600">
+              Rounded corners, borders, shadows - all fluid!
+            </p>
+          </div>
+        </div>
+
+        <!-- Interactive Demo -->
+        <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+          <div class="bg-gradient-to-r from-purple-600 to-pink-600 px-8 py-6">
+            <h2 class="text-3xl font-bold text-white">Interactive Demo</h2>
+            <p class="text-purple-100 mt-2">Resize your browser - watch EVERYTHING scale!</p>
+          </div>
+          
+          <div class="p-8 space-y-8">
+            <!-- Typography Scaling -->
+            <div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Typography (Pure Tailwind)</h3>
+              <div class="space-y-2 bg-gray-50 p-6 rounded-xl">
+                <p class="text-5xl font-bold">text-5xl: Hello World</p>
+                <p class="text-4xl font-bold">text-4xl: Hello World</p>
+                <p class="text-3xl font-semibold">text-3xl: Hello World</p>
+                <p class="text-2xl font-semibold">text-2xl: Hello World</p>
+                <p class="text-xl">text-xl: Hello World</p>
+                <p class="text-lg">text-lg: Hello World</p>
+                <p class="text-base">text-base: Hello World</p>
+                <p class="text-sm">text-sm: Hello World</p>
+              </div>
+            </div>
+
+            <!-- Spacing Scaling -->
+            <div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Spacing (Pure Tailwind)</h3>
+              <div class="flex flex-wrap gap-4">
+                <div class="p-2 bg-blue-500 text-white rounded-lg text-sm font-semibold">p-2</div>
+                <div class="p-4 bg-purple-500 text-white rounded-lg text-sm font-semibold">p-4</div>
+                <div class="p-6 bg-pink-500 text-white rounded-lg text-sm font-semibold">p-6</div>
+                <div class="p-8 bg-orange-500 text-white rounded-lg text-sm font-semibold">p-8</div>
+                <div class="p-12 bg-red-500 text-white rounded-lg text-sm font-semibold">p-12</div>
+              </div>
+            </div>
+
+            <!-- Buttons Scaling -->
+            <div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Buttons (Pure Tailwind)</h3>
+              <div class="flex flex-wrap gap-4">
+                <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg font-semibold hover:shadow-lg transition-all">
+                  Small Button
+                </button>
+                <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-xl text-lg font-semibold hover:shadow-xl transition-all">
+                  Medium Button
+                </button>
+                <button class="px-8 py-4 bg-gradient-to-r from-pink-500 to-pink-600 text-white rounded-2xl text-xl font-bold hover:shadow-2xl transition-all">
+                  Large Button
+                </button>
+              </div>
+            </div>
+
+            <!-- Card Grid -->
+            <div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Card Grid (Pure Tailwind)</h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-gradient-to-br from-blue-100 to-blue-200 p-6 rounded-xl">
+                  <div class="text-4xl mb-2">📊</div>
+                  <div class="text-lg font-bold">Card 1</div>
+                  <div class="text-sm text-gray-600 mt-1">Scales perfectly</div>
+                </div>
+                <div class="bg-gradient-to-br from-purple-100 to-purple-200 p-6 rounded-xl">
+                  <div class="text-4xl mb-2">🚀</div>
+                  <div class="text-lg font-bold">Card 2</div>
+                  <div class="text-sm text-gray-600 mt-1">No effort needed</div>
+                </div>
+                <div class="bg-gradient-to-br from-pink-100 to-pink-200 p-6 rounded-xl">
+                  <div class="text-4xl mb-2">⚡</div>
+                  <div class="text-lg font-bold">Card 3</div>
+                  <div class="text-sm text-gray-600 mt-1">Pure Tailwind</div>
+                </div>
+                <div class="bg-gradient-to-br from-orange-100 to-orange-200 p-6 rounded-xl">
+                  <div class="text-4xl mb-2">✨</div>
+                  <div class="text-lg font-bold">Card 4</div>
+                  <div class="text-sm text-gray-600 mt-1">Magic!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Benefits -->
+        <div class="mt-12 bg-gradient-to-r from-green-50 to-emerald-50 border-l-4 border-green-500 p-8 rounded-r-2xl">
+          <h3 class="text-2xl font-bold text-green-900 mb-4">✨ Approach 2 Advantages</h3>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <h4 class="font-bold text-green-700 mb-3 text-lg">✅ Pros:</h4>
+              <ul class="text-base text-gray-700 space-y-2">
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600">•</span>
+                  <span><strong>Use pure Tailwind</strong> - no custom classes</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600">•</span>
+                  <span><strong>Everything scales</strong> - padding, text, gaps, borders</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600">•</span>
+                  <span><strong>Cleaner code</strong> - just Tailwind utilities</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600">•</span>
+                  <span><strong>Team friendly</strong> - everyone knows Tailwind</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-green-600">•</span>
+                  <span><strong>IntelliSense works</strong> - autocomplete everywhere</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="font-bold text-yellow-700 mb-3 text-lg">⚠️ Considerations:</h4>
+              <ul class="text-base text-gray-700 space-y-2">
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-600">•</span>
+                  <span>Requires <code class="bg-yellow-100 px-1 rounded">tailwind.config.mjs</code> setup</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-600">•</span>
+                  <span>Must import <code class="bg-yellow-100 px-1 rounded">fluid-base.css</code></span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-yellow-600">•</span>
+                  <span>One-time configuration needed</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="mt-8 bg-gray-900 rounded-2xl p-8 text-white">
+          <h3 class="text-2xl font-bold mb-4">How It Works</h3>
+          <div class="bg-gray-800 p-6 rounded-xl font-mono text-sm overflow-x-auto">
+            <div class="text-green-400">// tailwind.config.mjs</div>
+            <div class="text-gray-400">spacing: {`{`}</div>
+            <div class="text-blue-400 ml-4">4: '1rem',  <span class="text-gray-500">// Scales with html font-size!</span></div>
+            <div class="text-blue-400 ml-4">8: '2rem',  <span class="text-gray-500">// Auto scaling!</span></div>
+            <div class="text-gray-400">{`}`}</div>
+            <div class="mt-4 text-gray-400">// Your component</div>
+            <div class="text-pink-400">&lt;div className="p-8 text-2xl gap-4"&gt;</div>
+            <div class="ml-4 text-gray-300">Everything scales automatically! 🎉</div>
+            <div class="text-pink-400">&lt;/div&gt;</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function updateDebug() {
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+        const vwEl = document.getElementById('vw');
+        const vhEl = document.getElementById('vh');
+        const htmlFsEl = document.getElementById('htmlFs');
+        const bpEl = document.getElementById('bp');
+        
+        if (vwEl) vwEl.textContent = String(vw);
+        if (vhEl) vhEl.textContent = String(vh);
+        
+        const htmlFs = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        if (htmlFsEl) htmlFsEl.textContent = htmlFs.toFixed(2);
+        
+        let bp = vw <= 425 ? 'Mobile (Fluid)' :
+                 vw < 768 ? 'Mobile-Tablet (Static)' :
+                 vw < 1024 ? 'Tablet (Fluid)' :
+                 vw < 1280 ? 'Tablet-Desktop (Static)' :
+                 vw < 1440 ? 'Desktop (Fluid)' : 'Desktop+ (Static)';
+        
+        if (bpEl) bpEl.textContent = bp;
+      }
+      
+      updateDebug();
+      window.addEventListener('resize', updateDebug);
+      setInterval(updateDebug, 100);
+    </script>
+  </body>
+</html>
+
