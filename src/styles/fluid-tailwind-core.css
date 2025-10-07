@@ -1,8 +1,13 @@
 /**
- * FLUID DESIGN SYSTEM BASE (For Tailwind CSS)
+ * FLUID TAILWIND CORE
+ * File: fluid-tailwind-core.css
  * 
- * This file sets up the html font-size scaling system.
- * All Tailwind utilities will automatically scale because they use rem values.
+ * This file provides the foundation for Tailwind CSS to scale fluidly.
+ * It sets up responsive html font-size scaling, making ALL Tailwind 
+ * utilities automatically scale with viewport changes.
+ * 
+ * Use this when: You want to use Tailwind CSS with fluid scaling
+ * Contains: Only html font-size scaling rules (no utility classes)
  */
 
 /* ============================================

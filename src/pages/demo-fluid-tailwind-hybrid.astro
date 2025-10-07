@@ -1,16 +1,16 @@
 ---
 /**
- * APPROACH 1: Side-by-Side
- * Use Tailwind for layout/colors, fluid classes for scaling
+ * Demo: Fluid + Tailwind Hybrid Approach
+ * Uses Tailwind for layout/colors and fluid classes for scaling
  */
-import '../styles/fluid-base.css';
+import '../styles/fluid-tailwind-core.css';
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Approach 1: Side-by-Side - Tailwind + Fluid</title>
+    <title>Demo: Fluid + Tailwind Hybrid</title>
   </head>
   <body class="bg-gray-50">
     <!-- Debug Bar -->
@@ -20,6 +20,11 @@ import '../styles/fluid-base.css';
       <div>Breakpoint: <span id="bp">Mobile</span></div>
       <div class="text-green-400">✅ Approach 1: Side-by-Side</div>
     </div>
+
+    <!-- Navigation Link -->
+    <a href="/" class="fixed top-12 left-4 z-40 bg-white/95 text-blue-600 px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:bg-blue-600 hover:text-white transition-all">
+      ← Back to Approaches
+    </a>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center mt-10">

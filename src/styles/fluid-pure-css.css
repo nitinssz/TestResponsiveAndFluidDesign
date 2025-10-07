@@ -1,8 +1,15 @@
 /**
- * PURE CSS FLUID DESIGN SYSTEM (Zero JavaScript)
+ * FLUID PURE CSS
+ * File: fluid-pure-css.css
  * 
- * This uses CSS clamp() directly in properties for true fluid scaling
- * No CSS variables needed - clamp() recalculates automatically on viewport change
+ * Complete standalone fluid design system with utility classes.
+ * Pure CSS implementation - no frameworks, no JavaScript required.
+ * Includes html font-size scaling PLUS pre-built utility classes
+ * for typography, spacing, padding, gaps, etc.
+ * 
+ * Use this when: You want a complete fluid system without frameworks
+ * Contains: Scaling rules + utility classes (.fluid-text-*, .fluid-padding-*, etc.)
+ * Zero JavaScript required - uses pure CSS clamp() for fluid scaling
  */
 
 /* ============================================

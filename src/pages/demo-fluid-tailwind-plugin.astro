@@ -1,16 +1,16 @@
 ---
 /**
- * APPROACH 3: Custom Plugin Utilities
- * Use custom fluid-* utilities from Tailwind plugin
+ * Demo: Tailwind Plugin with Fluid Utilities
+ * Uses custom fluid-* utilities from Tailwind plugin
  */
-import '../styles/fluid-base.css';
+import '../styles/fluid-tailwind-core.css';
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Approach 3: Custom Plugin - Tailwind + Fluid</title>
+    <title>Demo: Tailwind Plugin with Fluid Utilities</title>
   </head>
   <body class="bg-gradient-to-br from-blue-50 to-indigo-50">
     <!-- Debug Bar -->
@@ -20,6 +20,11 @@ import '../styles/fluid-base.css';
       <div>Breakpoint: <span id="bp">Mobile</span></div>
       <div class="text-blue-400">🔌 Approach 3: Custom Plugin</div>
     </div>
+
+    <!-- Navigation Link -->
+    <a href="/" class="fixed top-12 left-4 z-40 bg-white/95 text-blue-600 px-4 py-2 rounded-lg text-sm font-semibold shadow-lg hover:bg-blue-600 hover:text-white transition-all">
+      ← Back to Approaches
+    </a>
 
     <!-- Hero Section -->
     <section class="min-h-screen flex items-center justify-center pt-16 pb-8">
