@@ -18,7 +18,7 @@ import '../styles/fluid-pure-css.css';
       /* Debug Bar */
       .debug-bar {
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
         background: #000;
@@ -30,6 +30,12 @@ import '../styles/fluid-pure-css.css';
         z-index: 10000;
         font-size: 0.75rem;
         font-family: monospace;
+        transition: transform 0.3s ease;
+        transform: translateY(0);
+      }
+
+      .debug-bar.hidden {
+        transform: translateY(100%);
       }
 
       .debug-bar strong {
@@ -69,7 +75,7 @@ import '../styles/fluid-pure-css.css';
         padding: 3rem 1rem;
         position: relative;
         overflow: hidden;
-        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
       }
 
       .hero::before {
@@ -442,6 +448,26 @@ import '../styles/fluid-pure-css.css';
     </main>
 
     <script>
+      // Scroll behavior for debug bar
+      let lastScrollTop = 0;
+      const debugBar = document.querySelector('.debug-bar');
+      
+      if (debugBar) {
+        window.addEventListener('scroll', function() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Scrolling down & past 50px
+            debugBar.classList.add('hidden');
+          } else {
+            // Scrolling up
+            debugBar.classList.remove('hidden');
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+      }
+
       // This JavaScript is ONLY for the debug bar display
       // The actual scaling happens in pure CSS!
       function updateDebug() {
