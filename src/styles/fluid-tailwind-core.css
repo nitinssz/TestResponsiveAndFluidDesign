@@ -26,9 +26,9 @@
    ============================================ */
 
 html {
-  /* Fluid font size from 320px to 425px */
-  /* 16px at 320px, 21.25px at 425px (scale factor: 1.328125) */
-  font-size: clamp(16px, calc(16px + (21.25 - 16) * ((100vw - 320px) / (425 - 320))), 21.25px);
+  /* Fluid font size from 320px to 450px */
+  /* 14.22px at 320px, 20px at 450px (scale factor: 1.4066) */
+  font-size: clamp(14.22px, calc(14.22px + (20 - 14.22) * ((100vw - 320px) / (450 - 320))), 20px);
   scroll-behavior: smooth;
 }
 
@@ -40,14 +40,14 @@ body {
 }
 
 /* ============================================
-   MOBILE-TABLET STATIC: 426px - 768px
+   MOBILE-TABLET STATIC: 451px - 768px
    Content locked, margins grow
    ============================================ */
 
-@media (min-width: 426px) and (max-width: 767px) {
+@media (min-width: 451px) and (max-width: 767px) {
   html {
-    /* Lock font size at 425px value */
-    font-size: 21.25px;
+    /* Lock font size at 450px value (20px) */
+    font-size: 20px;
   }
 }
 
@@ -55,10 +55,10 @@ body {
    TABLET RANGE: 768px - 1024px (Fluid Scaling)
    ============================================ */
 
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) and (max-width: 959px) {
   html {
-    /* Fluid: 16px at 768px to 21.33px at 1024px */
-    font-size: clamp(16px, calc(16px + (21.33 - 16) * ((100vw - 768px) / (1024 - 768))), 21.33px);
+    /* Fluid: 16px at 768px to 20px at 960px */
+    font-size: clamp(16px, calc(16px + (20 - 16) * ((100vw - 768px) / (960 - 768))), 20px);
   }
 }
 
@@ -66,10 +66,10 @@ body {
    TABLET-DESKTOP STATIC: 1024px - 1280px
    ============================================ */
 
-@media (min-width: 1024px) and (max-width: 1279px) {
+@media (min-width: 960px) and (max-width: 1279px) {
   html {
-    /* Lock at 1024px value */
-    font-size: 21.33px;
+    /* Lock at 20px from 960px onwards */
+    font-size: 20px;
   }
 }
 
@@ -77,10 +77,10 @@ body {
    DESKTOP RANGE: 1280px - 1440px (Fluid Scaling)
    ============================================ */
 
-@media (min-width: 1280px) and (max-width: 1439px) {
+@media (min-width: 1280px) and (max-width: 1599px) {
   html {
-    /* Fluid: 16px at 1280px to 18px at 1440px */
-    font-size: clamp(16px, calc(16px + (18 - 16) * ((100vw - 1280px) / (1440 - 1280))), 18px);
+    /* Fluid: 16px at 1280px to 20px at 1600px (25% scaling) */
+    font-size: clamp(16px, calc(16px + (20 - 16) * ((100vw - 1280px) / (1600 - 1280))), 20px);
   }
 }
 
@@ -88,10 +88,10 @@ body {
    DESKTOP+ STATIC: 1440px+
    ============================================ */
 
-@media (min-width: 1440px) {
+@media (min-width: 1600px) {
   html {
-    /* Lock at 1440px value */
-    font-size: 18px;
+    /* Lock at 20px from 1600px onwards */
+    font-size: 20px;
   }
 }
 
