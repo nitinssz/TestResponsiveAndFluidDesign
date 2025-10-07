@@ -14,7 +14,7 @@ import '../styles/fluid-tailwind-core.css';
   </head>
   <body class="bg-gray-50">
     <!-- Debug Bar -->
-    <div class="fixed top-0 left-0 right-0 bg-black text-white px-4 py-2 flex justify-between items-center z-50 text-xs font-mono">
+    <div id="debugBar" class="fixed bottom-0 left-0 right-0 bg-black text-white px-4 py-2 flex justify-between items-center z-50 text-xs font-mono transition-transform duration-300 ease-in-out">
       <div>Viewport: <span id="vw">0</span>px × <span id="vh">0</span>px</div>
       <div>1rem = <span id="htmlFs">0</span>px</div>
       <div>Breakpoint: <span id="bp">Mobile</span></div>
@@ -27,7 +27,7 @@ import '../styles/fluid-tailwind-core.css';
     </a>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center mt-10">
+    <section class="min-h-screen flex items-center justify-center mb-10">
       <div class="fluid-container">
         <!-- Using Tailwind for layout -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -157,6 +157,26 @@ import '../styles/fluid-tailwind-core.css';
     </section>
 
     <script>
+      // Scroll behavior for debug bar
+      let lastScrollTop = 0;
+      const debugBar = document.getElementById('debugBar');
+      
+      if (debugBar) {
+        window.addEventListener('scroll', function() {
+          const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          if (scrollTop > lastScrollTop && scrollTop > 50) {
+            // Scrolling down & past 50px
+            debugBar.style.transform = 'translateY(100%)';
+          } else {
+            // Scrolling up
+            debugBar.style.transform = 'translateY(0)';
+          }
+          
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+      }
+
       function updateDebug() {
         const vw = window.innerWidth;
         const vh = window.innerHeight;
